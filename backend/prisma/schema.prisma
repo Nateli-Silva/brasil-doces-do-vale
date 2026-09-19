@@ -1,0 +1,106 @@
+// Brasil Doces do Vale — schema.prisma
+// ORM: Prisma | DB padrão: SQLite (troque o provider para "postgresql" em produção)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  TRUFAS
+  CONES
+  BRIGADEIROS
+  ALFAJORES
+  COMBOS
+  REVENDA
+}
+
+enum PaymentMethod {
+  PIX
+  DINHEIRO
+  CARTAO
+}
+
+enum OrderStatus {
+  PENDENTE
+  CONFIRMADO
+  EM_PREPARO
+  SAIU_PARA_ENTREGA
+  ENTREGUE
+  CANCELADO
+}
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  imageUrl    String?
+  category    Category
+  active      Boolean     @default(true)
+  featured    Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  orderItems  OrderItem[]
+
+  @@map("products")
+}
+
+model DeliverySlot {
+  id        Int      @id @default(autoincrement())
+  label     String // Ex: "Quinta-feira, 08:00 - 12:00"
+  dayOfWeek String? // Ex: "Quinta-feira" (opcional, apenas informativo)
+  startTime String // Ex: "08:00"
+  endTime   String // Ex: "12:00"
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  orders    Order[]
+
+  @@map("delivery_slots")
+}
+
+model Order {
+  id             Int           @id @default(autoincrement())
+  customerName   String
+  customerPhone  String
+  address        String
+  neighborhood   String?
+  reference      String?
+  paymentMethod  PaymentMethod
+  changeFor      Float? // "troco para quanto?" (apenas se DINHEIRO)
+  deliverySlotId Int
+  deliverySlot   DeliverySlot  @relation(fields: [deliverySlotId], references: [id])
+  items          OrderItem[]
+  subtotal       Float
+  total          Float
+  status         OrderStatus   @default(PENDENTE)
+  notes          String?
+  createdAt      DateTime      @default(now())
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  unitPrice Float
+
+  @@map("order_items")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String // hash bcrypt
+  createdAt DateTime @default(now())
+
+  @@map("admins")
+}

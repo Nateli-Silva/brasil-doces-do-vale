@@ -1,0 +1,169 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║           🍫 BRASIL DOCES DO VALE — ACESSO PELO CELULAR 📱                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 PASSO 1: INSTALAR NGROK (Uma única vez)
+
+   1. Baixe em: https://ngrok.com/download
+   2. Descompacte na pasta do projeto
+   3. Pronto!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚙️ PASSO 2: ABRIR 3 TERMINAIS
+
+   Terminal 1 (Backend):
+   $ cd backend
+   $ npm run dev
+   ✅ Rodando em http://localhost:3333
+
+   Terminal 2 (Frontend):
+   $ cd frontend  
+   $ npm run dev
+   ✅ Rodando em http://localhost:5173
+
+   Terminal 3 (Ngrok):
+   $ ./ngrok http 3333
+   ✅ Copia a URL: https://abc123.ngrok.io
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 PASSO 3: NO CELULAR, ABRA ESTAS URLs
+
+   Opção A: Via WiFi (mesma rede)
+   ──────────────────────────────
+   Descubra seu IP: ipconfig (Windows) ou ifconfig (Mac/Linux)
+   
+   Vitrine:   http://SEU-IP:5173
+   Admin:     http://SEU-IP:5173/admin/login
+   Editor:    http://SEU-IP:5173/editor.html
+
+   Opção B: Via Internet (Ngrok)
+   ────────────────────────────
+   Copie a URL do ngrok:
+   
+   Vitrine:   https://abc123.ngrok.io
+   Admin:     https://abc123.ngrok.io/admin/login  
+   Editor:    https://abc123.ngrok.io/editor.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔑 CREDENCIAIS DO ADMIN
+
+   Usuário:  admin
+   Senha:    brasil2024
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 TAREFAS COMUNS (No Celular)
+
+   ✅ VER O SITE
+      → Acesse: https://abc123.ngrok.io
+      → Adicione produtos ao carrinho
+      → Teste o checkout (abre WhatsApp)
+
+   ✅ EDITAR PRODUTOS  
+      → Acesse: https://abc123.ngrok.io/admin/login
+      → Login com admin / brasil2024
+      → Clique "Produtos"
+      → Adicione/edite produtos
+      → Aparece na vitrine em tempo real!
+
+   ✅ CONFIGURAR HORÁRIOS
+      → Admin → "Horários de Entrega"
+      → Clique "Novo horário"
+      → Preencha e salve
+      → Clientes verão na entrega!
+
+   ✅ VER PEDIDOS RECEBIDOS
+      → Admin → "Painel de Pedidos"
+      → Veja todos os pedidos
+      → Atualize o status
+
+   ✅ EDITAR CÓDIGO
+      → Acesse: https://abc123.ngrok.io/editor.html
+      → Selecione uma pasta
+      → Clique no arquivo
+      → Edite e salva (localStorage)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 MUDAR CORES (Rápido)
+
+   Arquivo: frontend/tailwind.config.js
+
+   theme: {
+     colors: {
+       brand: {
+         green: "#00A859",      ← Cor principal (verde)
+         greenDark: "#005C2E",  ← Cor escura  
+         gold: "#FACC15",       ← Cor dourada (preços)
+       }
+     }
+   }
+
+   Depois: Reload a página no celular (⟳)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🆘 PROBLEMAS?
+
+   ❌ "Não carrega a página"
+      → Terminal ngrok ainda rodando? (Ctrl+C = para)
+      → URL correta (https, não http)
+      → Celular na mesma rede? (WiFi)
+
+   ❌ "Admin não funciona"
+      → Username: admin
+      → Password: brasil2024
+      → Reload a página
+
+   ❌ "Página em branco"
+      → Frontend rodando em terminal 2?
+      → Backend rodando em terminal 1?
+      → npm install completo?
+
+   ❌ "Erro no checkout"
+      → Você selecionou um horário de entrega? (obrigatório!)
+      → Número WhatsApp correto? (+55 74 8132-4126)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 DICA DE OURO
+
+   👑 Melhor forma de customizar = Admin Panel
+   
+   Não precisa editar código!
+   → Produtos: add/edit/delete via painel
+   → Horários: gerencia pela interface
+   → Pedidos: visualiza e atualiza status
+
+   Isso não requer código, é tudo visual!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 LEIA MAIS
+
+   QUICK_START.md       ← Setup rápido
+   README.md            ← Guia completo
+   BUILD_SUMMARY.md     ← Detalhes técnicos
+   MOBILE_GUIDE.md      ← Este guia expandido
+   INDEX.md             ← Índice de arquivos
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 FLOW RECOMENDADO (Sem Código)
+
+   1. Abra ngrok (Terminal 3)
+   2. No celular: https://abc123.ngrok.io
+   3. Veja a vitrine funcionando
+   4. Faça um teste: add produto → checkout → WhatsApp
+   5. Acesse admin: /admin/login
+   6. Customize produtos, horários, veja pedidos
+   7. Pronto! Seu site está 100% funcional
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Version: 1.0 | Data: Setembro 2026 | Status: ✅ Pronto para Usar
